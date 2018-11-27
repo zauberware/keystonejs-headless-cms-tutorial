@@ -1,0 +1,59 @@
+{% import "../mixins/flash-messages.twig" as FlashMessages %}
+{% spaceless %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ title|default("My Keystone Project") }}</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link href="//fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+    <link href="styles/site.css" rel="stylesheet">
+    {% if user and user.canAccessKeystone %}
+        <link href="/keystone/styles/content/editor.min.css" rel="stylesheet">
+    {% endif %}
+    <!--[if lt IE 9]>
+        <script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+        <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% block css %}{% endblock %}
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    
+    <nav role="navigation">
+      <ul class="nav navbar-nav navbar-left">
+        {% for link in navLinks %}
+          {% set linkClass = '' %}
+          {% if link.key == section %}
+            {% set linkClass = ' class="active"' %}
+          {% endif %}
+          <li{{ linkClass | striptags }}>
+            <a href="{{ link.href }}">{{ link.label }}</a>
+          </li>
+        {% endfor %}
+        {% if user is defined %}
+          {% if user.canAccessKeystone %}
+            <li><a href="/keystone">Open AdminUI</a></li>
+          {% endif %}
+          <li><a href="/keystone/signout">Sign Out</a></li>
+        {% else %}
+          <li><a href="/keystone/signin">Sign In</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    
+    <main>
+      {% block intro %}{% endblock %}
+      {{ FlashMessages.renderMessages(messages) }}
+      {% block content %}{% endblock %}
+    </main>
+  
+    {% if (user is defined) and (user.canAccessKeystone) %}
+      <script src="/keystone/js/content/editor.js"></script>
+    {% endif %}
+    {% block js %}{% endblock %}
+  </body>
+</html>
+{% endspaceless %}

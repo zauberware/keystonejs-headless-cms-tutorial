@@ -1,0 +1,20 @@
+{% extends "../layouts/default.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="one column">
+            <h1>Welcome</h1>
+            <p>This is your new <a href="http://keystonejs.com" target="_blank">KeystoneJS</a> website.</p>
+            <hr>
+            {% if (user is defined) and (user.canAccessKeystone) %}
+                <p>
+                    <a href="/keystone" class="btn btn-lg btn-primary">Open the Admin UI</a>
+                </p>
+            {% else %}
+                <p>
+                  <a href="/keystone/signin" style="margin-right: 10px" class="btn btn-lg btn-primary">Sign in</a> to use the Admin UI.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

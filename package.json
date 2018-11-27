@@ -1,0 +1,28 @@
+{
+  "name": "@zauberware/keystone-tutorial",
+  "version": "0.0.1",
+  "description": "A starter for KeystoneJS apps",
+  "main": "keystone.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "keystone",
+    "keystonejs",
+    "javascript",
+    "starter",
+    "tutorial",
+    "headless",
+    "cms",
+    "cms"
+  ],
+  "author": "Philipp Siegmund <philipp@zauberware.com>",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "dotenv": "^6.1.0",
+    "keystone": "^4.0.0",
+    "lodash": "^4.17.11",
+    "twig": "^1.12.0"
+  }
+}
