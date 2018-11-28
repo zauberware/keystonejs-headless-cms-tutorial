@@ -16,4 +16,4 @@ npm install
 ```
 
 ### Usage
-Read the tutorial!
+Read the [tutorial](https://www.zauberware.com/en/articles/2018/how-to-setup-a-headless-cms-with-keystonejs-1/)!
